@@ -38,9 +38,9 @@ var newheight= height-300;
          current_position_of_y = e.touches[0].clientY - canvas.offsetTop;
 
         
-        ctx.beginPath();
+        ctx.beginPath(  current_position_of_x,current_position_of_y,30,20);
         ctx.strokeStyle = color;
-        ctx.lineWidth = width_of_line;
+        ctx.rect()
 
         console.log("Last position of x and y coordinates = ");
         console.log("x = " + last_position_of_x + "y = " + last_position_of_y);
@@ -59,16 +59,16 @@ var newheight= height-300;
      ctx.clearRect(0,0,canvas.width,canvas.height);
     }
 
-    canvas=document.getElementById("myCanvas");
-    ctx=canvas.getContext("2d");
+    
     var mouseevent="empty";
     var lx,ly;
-    var color = "black";
-    var width= 1;
+
+
     canvas.addEventListener("mousedown",mymousedown);
     function mymousedown(e){
         mouseevent="mousedown";
-    
+        color = document.getElementById("color").value;
+        width_of_line = document.getElementById("width").value;
     }
     canvas.addEventListener("mouseup",mymouseup);
     function mymouseup(e){
@@ -87,8 +87,7 @@ var newheight= height-300;
                 ctx.beginPath();
                 ctx.strokeStyle=color;
                 ctx.lineWidth=width;
-                ctx.moveTo(lx,ly);
-                ctx.lineTo(cx,cy);
+                ctx.rect(cx,cy);        
                 ctx.stroke();  
             }
         lx=cx;
