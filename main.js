@@ -22,6 +22,7 @@ var newheight= height-300;
         //Addictonal Activity start
         color = document.getElementById("color").value;
         width_of_line = document.getElementById("width").value;
+        shape=document.getElementById("shape").value
         //Addictonal Activity ends
 
         last_position_of_x=e.touches[0].clientX-canvas.offsetLeft;
@@ -36,7 +37,9 @@ var newheight= height-300;
 
          current_position_of_x = e.touches[0].clientX - canvas.offsetLeft;
          current_position_of_y = e.touches[0].clientY - canvas.offsetTop;
-
+        if(shape=="rectangle"){
+            ctx.rect(cx,cy);
+        }
         
         ctx.beginPath(  current_position_of_x,current_position_of_y,30,20);
         ctx.strokeStyle = color;
@@ -87,7 +90,13 @@ var newheight= height-300;
                 ctx.beginPath();
                 ctx.strokeStyle=color;
                 ctx.lineWidth=width;
-                ctx.rect(cx,cy);        
+                 
+                       if(shape=="rectangle"){
+                        ctx.rect(cx,cy,55,35);
+                       }
+                       if(shape=="circle") {
+                           ctx.circle(cx,cy,30)
+                       }
                 ctx.stroke();  
             }
         lx=cx;
